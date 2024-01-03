@@ -1,0 +1,21 @@
+
+@media (max-width: 768px){
+    .patient-table-header{
+        display: flex;
+        flex-direction: column;
+    }
+}
+.CircularProgress{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    align-content: center;
+    size: 30rem;
+}
+.CircularProgress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}

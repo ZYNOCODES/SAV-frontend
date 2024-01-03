@@ -1,0 +1,14 @@
+.toogle-button{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+
+}
+.toogle{
+    margin-left: 30px;
+}
+.toogle-button h4{
+    margin-right: 10px;
+    text-align: left;
+    width: 229px;
+}

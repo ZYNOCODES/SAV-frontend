@@ -1,0 +1,150 @@
+.login-page-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    
+}
+.forms-container {
+  display: flex;
+    width: 50%;
+    align-items:center;
+    justify-content: center;
+    align-content: center;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(212,23,27,1) 35%, rgba(0,212,255,1) 100%);
+    padding-top: 30px ;
+  }
+
+  .logoimg{
+    margin-top: 30px;
+  }
+  .left-login{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    display: flex;
+    justify-content: space-between; /* Aligns horizontally */
+    align-items: center; 
+    
+  }
+  
+  .login-signin {
+    position: relative;
+    z-index: 5;
+    transition: 1s 0.7s ease-in-out;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    width: max-content;
+    height: max-content;
+    align-items:center;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  form.login-in-form {
+    z-index: 2;
+  }
+
+  .title-login {
+    text-transform: capitalize;
+    color: #D4171B;
+    font-weight: 600;
+    line-height: 36px;
+    font-size: 30px;
+    margin-bottom: 53px;
+  }
+  
+  .input-field label {
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 5px;
+    line-height: 21.6px;
+    color: #D4171B;
+    margin-left: 10px;
+  }
+  
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .email {
+    margin-bottom: 14px;
+  }
+  
+  .input-field input,
+  .input-field select {
+    width: 392px;
+    height: 60px;
+    border-radius: 20px;
+    font-size: 14px;
+    padding-left: 3%;
+    background-color: #fff;
+    border: none;
+    outline: none;
+  }
+  
+  .input-field select {
+    cursor: pointer;
+  }
+  
+  .input-field input::-webkit-input-placeholder {
+    color: rgb(186, 186, 186);
+  }
+  
+  .input-field input::placeholder {
+    color: rgb(186, 186, 186);
+  }
+  
+  
+  .forget-class {
+    margin-top: 6px;
+    width: 392px;
+    display: flex;
+    justify-content: end;
+    padding-right: 10px;
+  }
+  
+  .forget-class a {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.4px;
+    color: rgba(6, 14, 48, 0.5);
+    opacity: 0.7;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .forget-class a:hover {
+    opacity: 1;
+  }
+  
+  .btn-solid {
+    width: 392px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .btn-solid:hover {
+
+    background-color:#D4171B;
+
+    color:  #ffffff;
+  }
+  
+  .cnx-btn {
+    height: 60px;
+    margin-top: 60px;
+    background-color: #D4171B;
+    color: #fff;
+  }

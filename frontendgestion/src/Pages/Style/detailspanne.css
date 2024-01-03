@@ -1,0 +1,559 @@
+.file-send-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #d4171b;
+  font-size: large;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.pannedetails-suspended-container h3 {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  bottom: 20px;
+}
+
+.raison{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin: 15px 0px;
+}
+
+.susp{
+  margin-left: 0px;
+}
+
+.Action-correctives-btn{
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d4171b;
+  border-radius: 10px;
+  color: #fff;
+  padding: 7px 0px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.Action-correctives-btn h3{
+  color: #fff;
+}
+.pannedetails-suspended-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Change this to 100vh to fill the full viewport height */
+  overflow: auto; /* Add scrollbars if content overflows */
+  background-color: rgba(0, 0, 0, 0.5); /* Use rgba to specify opacity */
+  position: fixed; /* Use fixed to cover the entire viewport */
+  top: 0;
+  left: 0;
+}
+.Suspendbutton h3{
+  font-size: 15px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.Suspendbutton{
+  display: flex;
+  width: 20%;
+  height: 5vh;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #d4171b;
+  cursor: pointer;
+}
+.pannedetails-title-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.Updatebutton{
+  display: flex;
+  width: 100%;
+  height: 5vh;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #d4171b;
+  cursor: pointer;
+}
+.Updatebutton h3{
+  font-size: 15px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.forminput{
+  display: flex;
+  flex-direction: column;
+}
+.forminput textarea{
+  padding: 10px 20px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  text-align: flex-start;
+  width: 70vh;
+  font-size: 1em;
+  background-color: #dadada;
+
+}
+.forminput textarea:enabled{
+  border: 2px solid #c4c2c2;
+  transition: 0.5s;
+}
+.forminput label{
+  margin-top: 20px;
+  margin-left: 10px;
+  text-align: left;
+}
+.forminput textarea:hover{
+  border: 2px solid #000;
+  transition: 0.5s;
+}
+.pannedetails-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background-color: #f8f9fd;
+  top: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  overflow-y: scroll;
+  padding: 30px 55px;
+}
+.pannedetails-info progressbar .Historique-container {
+  width: 100%;
+}
+.pannedetails-title {
+  text-align: left;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+.back-button {
+  background-color: #d4171b;
+  border-radius: 10px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  cursor: pointer;
+}
+.icon {
+  color: #f8f9fd;
+  size: 25px;
+}
+
+.pannedetails-title h3 {
+  color: #d4171b;
+  font-size: 20px;
+  font-weight: 600;
+}
+.pannedetails-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.pannedetails-info form {
+  padding-left: 50px;
+  padding-right: 50px;
+  justify-content: center;
+}
+.progress {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+.progressbar {
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-top: 30px;
+  width: 80%;
+}
+.progressbar h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  color: #161616;
+  text-align: center;
+  font-size: 25px;
+}
+.progressbar-label {
+  color: #fff;
+}
+.depose-btn,
+.primaryButton {
+  border-radius: 10px;
+  background-color: #d4171b;
+  color: #f8f9fd;
+  padding: 10px 50px;
+  width: 30vh;
+}
+
+.Cancel-btn {
+  border-radius: 10px;
+  background-color: #f8f9fd;
+  color: #d4171b;
+  border: 1px solid #d4171b;
+  padding: 10px 50px;
+  width: 30vh;
+}
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.pannedetails-Button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  padding: 0px 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+.pannedetails-Button1 {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.pannedetails-Button2 {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  align-items: flex-end;
+}
+
+.Progress-btn button {
+  padding: 10px 25px;
+  background-color: #d4171b;
+  border: none;
+  margin: 10px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Progress-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-label {
+  background-color: #d4171b;
+  color: white;
+  margin-top: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+}
+.image {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.inputButton {
+  padding: 5px 15px;
+  background-color: #d4171b;
+  border: none;
+  margin-left: 30px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.inputButton label {
+  font-size: 16px;
+}
+
+.userbtn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userbtn input {
+  padding: 10px 25px;
+  background-color: #d4171b;
+  border: none;
+  margin: 0px 10px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 47px;
+}
+
+.progress-toogle {
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0px;
+}
+
+.left-toogle {
+  margin-right: 20px;
+}
+
+.right-toogle {
+  align-items: flex-start;
+  margin-left: 20px;
+  height: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.right-toogle-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.right-toogle-container label {
+  margin-top: 0px;
+}
+
+.progression-label {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.second-progress-div {
+  margin: 0px 12px;
+}
+
+.s-dv {
+  padding-left: 20px;
+}
+
+.STATUEG {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.BoxState {
+  margin-left: 10px;
+}
+
+.GlobalInput{
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+.searchclass{
+  margin-top: 30px;
+  margin-right: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+}
+
+.delaimoy{
+  padding: 5px 5px;
+  color: #d4171b;
+  border-radius: 6px;
+}
+
+.Bons-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.Bons-container .buttonbons{
+  height: 50px;
+  width: 200px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+  padding-left: 10px;
+  margin-top: 30px;
+  padding-right: 10px;
+  cursor: pointer;
+  
+ 
+}
+
+.bd{
+  background-color: #d4171b;
+ 
+}
+
+.bl{
+  background-color: #00ca0d;
+ 
+}
+@media only screen and (max-width: 1215px) {
+  .pannedetails-container {
+    padding: 10px 10px;
+    width: 100%;
+  }
+
+  .pannedetails-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .pannedetails-Button {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pannedetails-Button1 {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
+  .depose-btn,
+  .primaryButton,
+  .Cancel-btn {
+    margin-top: 15px;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 40vh;
+  }
+  .progress-toogle {
+    display: flex;
+    flex-direction: column;
+  }
+  .right-toogle {
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+
+  .STATUEG {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  td.table-patients-header-region,
+  td.table-patients-data-region {
+    display: none;
+  }
+  
+  /* Reduce font size for better readability on small screens */
+  td {
+    font-size: 10px;
+    padding: 2px;
+  }
+
+  .searchclass{
+    
+    margin-right: 0px;
+    
+    justify-content: center;
+    align-items: center;
+  
+  }
+}
+@media only screen and (max-width:1024px){
+  .forminput textarea{
+      padding: 7px 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      text-align: left;
+      width: 40vh;
+      font-size: 0.8em;
+      display: flex;
+      flex-direction: column;
+  }
+  .forminput label{
+      margin-bottom: 7px;
+      margin-left: 7px;
+      font-size: 0.8em;
+  }
+
+}

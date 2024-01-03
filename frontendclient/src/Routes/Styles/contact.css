@@ -1,0 +1,154 @@
+.Contact-page{
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F8F9FD;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    overflow: hidden;
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.first-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.second-section,.Message-type-select{
+    display: flex;
+    flex-direction: column;
+    width: 100vh;
+    margin: 0px 10px;
+    
+    justify-content: center;
+    align-items: center;
+}
+.second-section label{
+    margin: 0px;
+    margin-left: 30px;
+    text-align: left;
+    width: 90%;
+}
+.Message-type-select{
+    padding: 0px 0px;
+}
+.typesection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Message-type-select label{
+    margin-bottom: 10px;
+    margin-left: 30px;
+    text-align: left;
+    width: 90%;
+}
+.Message-type-select select{
+    padding: 7px 20px;
+    margin:10px 0px;
+    border-radius: 10px;
+    border: 2px solid rgb(0, 0, 0);
+    text-align: center;
+    width: 90%;
+}
+
+.contact--input{
+    padding: 7px 0px;
+    margin: 0px 10px;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+textarea{
+    width: 90%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #c4c2c2;
+    border-radius: 10px;
+    text-align: left;
+    align-self: center;
+}
+
+.buttons-area{
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    .Contact-page {
+      padding-top: 10px;
+    }
+
+    .Message-type-select{
+        margin: 0px 0px;
+    }
+  
+    .first-section,
+    .second-section,
+    .Message-type-select {
+      width: 100%;
+      margin-left: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 0px;
+    }
+
+    
+  
+    .second-section label {
+      margin-left: 0;
+      width: 210px;
+    }
+
+    .Message-type-select label{
+        width: 100%;
+    }
+  
+    .Message-type-select select
+    {
+      width: 210px;  
+      margin: 0px 0px;
+    }
+
+    .typesection, .second-section
+    {
+        margin: 10px 0px;
+
+    }
+    textarea{
+        width: 210px
+    }
+
+    .buttons-area{
+        display: flex;
+        flex-direction: column;
+        width: 210px;
+        justify-content: center;
+        align-items: center;
+    }
+    .buttons-area #cancel_button, .buttons-area #submit_button{
+        
+        margin-right: 0px;
+        width: 210px;
+    }
+  }
+
+
+
+

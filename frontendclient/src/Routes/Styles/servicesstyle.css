@@ -1,0 +1,105 @@
+.Service-page-content{
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F8F9FD;
+    padding-top: 25px;
+}
+
+h2{
+    color: #da171B;
+}
+
+h2,p{
+    text-align: center;
+}
+
+.cards{
+    padding: 40px 80px; 
+}
+
+.section-title{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.section-title h4{
+    font-size: 1.8em;
+    text-align: center;
+    margin-right: 0px;
+}
+
+.cards-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #fff;
+    width: 350px; 
+    box-shadow: 0 5px 25px rgba(78, 0, 0, 0.173);
+    border-radius: 10px;
+    padding: 30px 10px;
+    margin:15px;
+    transition: 0.7s ease;
+    justify-content: center;
+    align-items: center;
+  }
+  .card:hover {
+    transform: scale(1.1);
+  }
+  
+
+  
+  .info {
+    text-align: center;
+  }
+  
+  .info h5{
+    margin-top: 10px;
+    font-size: 1.25rem;
+    line-height: 1.375;
+    color: #252f40;
+  }
+.icon-section{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon{
+    background-image: linear-gradient(310deg, #ed797b 0%, #e12227 100%);
+    width: min-content;
+    padding: 7px;
+    border-radius: 7px ;
+}
+.info span{
+    font-size: 0.75rem !important;
+    line-height: 1.25;
+}
+
+.info hr{
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: transparent;
+}
+
+
+
+hr:not([size]) {
+    height: 1px;
+}
+
+.info h6{
+    font-size: 1rem;
+    line-height: 1.625;
+}
+

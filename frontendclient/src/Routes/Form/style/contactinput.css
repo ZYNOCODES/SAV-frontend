@@ -1,0 +1,31 @@
+.contactinput{
+    display: flex;
+    flex-direction: column;
+}
+
+.contactinput label{
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+
+
+.contactinput input{
+    padding: 7px 20px;
+    margin: 0px 10px;
+    border-radius: 10px;
+    border: 2px solid rgb(0, 0, 0);
+    text-align: center;
+    width: auto;
+}
+
+.contactinput input:enabled{
+    border: 2px solid #c4c2c2;
+    transition: 0.5s;
+}
+
+.contactinput input:hover{
+    border: 2px solid #000;
+    transition: 0.5s;
+}
+

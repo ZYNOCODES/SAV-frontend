@@ -1,0 +1,120 @@
+.form{
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F8F9FD;
+    padding-top: 25px;
+}
+
+.form h2{
+    text-align: center;
+    color: #DA171B;
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+.form p{
+text-align: center;
+}
+
+.form form{
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+    justify-content: center;
+}
+.left-form{
+    margin-right: 30px;
+}
+.right-form{
+    margin-left: 30px;
+}
+
+.button-section{
+    margin-top: 20px;
+}
+
+#cancel_button{
+    font-size: 1.1em;
+    font-weight: 200;
+    background-color: #fff;
+    color: #DA171B;
+    padding: 3px 55px;
+    margin-right: 10px;
+    border-color:#DA171B;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#submit_button{
+    font-size: 1.1em;
+    font-weight: 200;
+    background-color: #DA171B;
+    color: #fff;
+    padding: 5px 55px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:1024px){
+
+    .form{
+        overflow-y: scroll;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form h2{
+        text-align: center;
+        color: #DA171B;
+        font-size: 1.5em;
+        letter-spacing: 1px;
+    }
+
+    .form p{
+        font-size: 1em;
+    }
+    .form form{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-form{
+        margin-right: 0px;
+    }
+    .right-form{
+        margin-left: 0px;
+    }
+
+    .button-section{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #cancel_button{
+        margin-bottom: 2px;
+    }
+    
+    #submit_button{
+        margin-top: 2px;
+    }
+}
+.CircularProgress-container{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: #DA171B;
+}
