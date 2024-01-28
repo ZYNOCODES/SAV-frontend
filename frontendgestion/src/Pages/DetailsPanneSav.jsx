@@ -52,6 +52,7 @@ const DetailsPanneSav = () => {
     false,
     false,
   ]);
+  
   const [sousGarantieChecked, setSousGarantieChecked] = useState(false);
   const [horsGarantieChecked, setHorsGarantieChecked] = useState(false);
   const [sousReserveChecked, setSousReserveChecked] = useState(false);
@@ -135,7 +136,7 @@ const DetailsPanneSav = () => {
       console.error("Error fetching Panne data:", error);
     }
   };
-  useEffect(() => {
+  useEffect(() => { 
     fetchPanneData();
   },[user.token, id, image]);
   //Get all pannes data of a product from server
@@ -214,7 +215,8 @@ const DetailsPanneSav = () => {
                     ActinoCorrective: (PanneData.ActionCorrective || PanneData.DescriptionAC) ? true : false,
                     DateDepot: new Date().toISOString().slice(0, 10),
                     type: BL,  
-                    postalCode: CodePostal
+                    postalCode: CodePostal,
+                    Observation: PanneData.DescriptionAC,
                 })
                 });
                 const data = await response.json();
@@ -693,9 +695,7 @@ const DetailsPanneSav = () => {
             ''
           }
         </div>
-
         {suspended ?
-
           <>
             <div className="pannedetails-suspended-container">
               <div className="back-button susp" onClick={GoBackPressed}>
@@ -708,16 +708,11 @@ const DetailsPanneSav = () => {
               <div className="Suspendbutton" onClick={setOpenDialog5}>
                 <h3>Annuler la suspension</h3>
               </div>
-
-              
             </div>
-            
           </>
           : 
           ''
         }
-
-        
         <div className="pannedetails-info form-section">
                 <form>
                   <FormInput
