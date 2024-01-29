@@ -1,4 +1,5 @@
 import { createContext,useReducer, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
 
@@ -20,14 +21,15 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
-        if(user){
+        const decodedToken = jwtDecode(user.token);
+
+        if(user && decodedToken.exp * 1000 > Date.now()){
             dispatch({type: 'LOGIN',payload: user});
         }else{
             dispatch({type: 'LOGOUT',payload: user});
         }
     },[]);
 
-    console.log('AuthContext state: ',state);
     return (
         <AuthContext.Provider value={{...state,dispatch}}>
             {children}
