@@ -19,7 +19,6 @@ const ProgressionSelect = (props) => {
         <option value={2}>En reparation au centre</option>
         <option value={3}>Produits reparés</option>
         <option value={4}>Produits reparés en attente de livraison</option>
-        <option value={5}>Produits Livrés</option>
       </select>
     </div>
     
