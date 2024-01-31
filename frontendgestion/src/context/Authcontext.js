@@ -21,23 +21,28 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
-        const decodedToken = jwtDecode(user.token);
-        //make a request to the server to check if the token is still valid
-        const authentification = async () => {
-            const response = await fetch(process.env.REACT_APP_URL_BASE+`/User/${decodedToken._id}`, {
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${user?.token}`,
-                },
-            });
+        if(user?.token){
+            const decodedToken = jwtDecode(user?.token.toString());
+            //make a request to the server to check if the token is still valid
+            const authentification = async () => {
+                const response = await fetch(process.env.REACT_APP_URL_BASE+`/User/${decodedToken._id}`, {
+                    headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${user?.token}`,
+                    },
+                });
+            
+                if (response.ok && user && decodedToken.exp * 1000 > Date.now()) {
+                    dispatch({type: 'LOGIN',payload: user});
+                }else{
+                    dispatch({type: 'LOGOUT',payload: user});
+                }
+            };
+            authentification();
+        }else{
+            dispatch({type: 'LOGOUT',payload: user});
+        }
         
-            if (response.ok && user && decodedToken.exp * 1000 > Date.now()) {
-                dispatch({type: 'LOGIN',payload: user});
-            }else{
-                dispatch({type: 'LOGOUT',payload: user});
-            }
-        };
-        authentification();
     },[]);
 
     return (
