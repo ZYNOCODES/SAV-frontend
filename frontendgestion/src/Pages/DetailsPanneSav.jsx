@@ -945,7 +945,7 @@ const DetailsPanneSav = () => {
                   <tr className="table-patients-header">
                     <td className="table-patients-header-annee">ID</td>
                     <td className="table-patients-header-annee">Reference</td>
-                    <td className="table-patients-header-annee">Date</td>
+                    <td className="table-patients-header-annee">Date de fin reparation</td>
                     <td className="table-patients-header-willaya">Centre</td>
                     <td className="table-patients-header-region">
                       Type de panne

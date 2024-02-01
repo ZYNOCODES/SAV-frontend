@@ -28,7 +28,7 @@ function TablePanneRow ({Panne}){
   }
   const shouldHighlightRedRow = useMemo(() => Panne?.Etat === null && calculateDaysDifference(new Date(Panne.DateDepot)) > 3 && Panne.Progres < 3, [Panne.DateDepot, Panne.Progres]);
   const shouldHighlightOrangeRow = useMemo(() => Panne?.Etat === null && calculateDaysDifference(new Date(Panne.DateDepot)) > 3 && Panne.Progres >= 3 && Panne.Progres < 5, [Panne.DateDepot, Panne.Progres]);
-  const shouldHighlightYellowRow = useMemo(() => Panne?.Etat !== null, [Panne?.Etat]);
+  const shouldHighlightYellowRow = useMemo(() => Panne?.Etat !== null && (Panne?.Progres < 5), [Panne?.Etat]);
 
   return (
     <tr className={`table-nouveau-ne-ligne${(shouldHighlightRedRow || shouldHighlightOrangeRow || shouldHighlightYellowRow) ?
