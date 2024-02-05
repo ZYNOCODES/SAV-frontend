@@ -44,7 +44,7 @@ function App() {
             path="/"
             element={user ? (
               user.Role === 'Admin' ? (
-                <Navigate to="/Dashboard" />
+                <Navigate to="/Main-Dashboard" />
               ) : (
                 <Navigate to="/liste_des_pannes" />
               )
@@ -52,7 +52,7 @@ function App() {
               <Login />
             )}
           />
-          <Route path="/Dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
+          <Route path="/Main-Dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
           <Route path="/liste_des_pannes" element={user ? <PanneList /> : <Navigate to="/" />} />
           <Route path="/OuvrirTicket" element={user ? <OuvrirUnTicket /> : <Navigate to="/" />} />
           <Route path="/PannesLivree" element={user ? <PanneListLivrees /> : <Navigate to="/" />} />

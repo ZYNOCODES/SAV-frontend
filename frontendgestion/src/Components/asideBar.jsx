@@ -21,10 +21,10 @@ export default function MyAsideBar() {
         <ul>
           {user && user.Role === "Admin" &&(
             <li className="mb-6">
-              <NavLink to="/Dashboard">
+              <NavLink to="/Main-Dashboard">
               <div
                   className={`link flex items-center justify-items-center ${
-                    location.pathname === "/Dashboard" ? "aside-item-active" : ""
+                    location.pathname === "/Main-Dashboard" ? "aside-item-active" : ""
                   }`}
                 >
                   <BiSolidDashboard className="w-6 h-6 ml-2" />
