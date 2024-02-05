@@ -28,10 +28,10 @@ function Dashboard() {
           const data = await response.json();
           setDashboardData(data.Dashboard);
         } else {
-          console.error("Error receiving Panne data:", response.statusText);
+          console.error("Error receiving dashboard data:", response.statusText);
         }
       } catch (error) {
-        console.error("Error fetching Panne data:", error);
+        console.error("Error fetching dashboard data:", error);
       }
     };
   

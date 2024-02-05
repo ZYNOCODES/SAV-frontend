@@ -3891,8 +3891,8 @@ form {
   size: 30rem;
 }
 .CircularProgress-container {
-display: flex;
-justify-content: center;
-align-items: center;
-height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
 }
