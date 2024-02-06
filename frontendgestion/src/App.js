@@ -1,7 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import MyAsideBar from "./Components/asideBar";
-import MyNavBar from "./Components/navBar";
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { PanneList } from './Pages/PanneList';
 import { PanneListLivrees } from './Pages/PanneListLivrees';
@@ -22,17 +20,30 @@ import './App.css'
 
 function App() {
   const { user } = useAuthContext();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
-    setIsLoading(false);
+    const handleOnlineStatusChange = () => {
+      setIsOnline(navigator.onLine);
+    };
+
+    window.addEventListener('online', handleOnlineStatusChange);
+    window.addEventListener('offline', handleOnlineStatusChange);
+
+    return () => {
+      window.removeEventListener('online', handleOnlineStatusChange);
+      window.removeEventListener('offline', handleOnlineStatusChange);
+    };
   }, []);
 
-  if (isLoading) {
+  if (!isOnline) {
     return (
-      <div className="CircularProgress-container">
-        <CircularProgress className='CircularProgress' />
-      </div>  
+      <div className="Main-app">
+        <div className="CircularProgress-container">
+          <CircularProgress className='CircularProgress' />
+        </div>  
+        <h1>Pas de connexion Internet...</h1>
+      </div>
     );
   }
 

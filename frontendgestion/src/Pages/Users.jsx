@@ -1,18 +1,13 @@
 import React, { useEffect } from 'react'
 import MyAsideBarActive from '../Components/asideBarActive'
-import { useNavigate } from 'react-router-dom';
 import { useState} from "react";
-import TablePanneRow from '../Components/Table/TablePanneRow';
-import Panne from '../Components/Table/Panne';
 import MyAsideBar from "../Components/asideBar";
 import MyNavBar from "../Components/navBar";
 import AdduserButton from '../Components/Buttons/AdduserButton';
 import UserRow from '../Components/Table/UserRow';
 import CostumSelectCentre from '../Components/Form/CostumSelectCentre';
-import CostumSelect from '../Components/Form/CostumSelect';
 import { useAuthContext } from '../hooks/useAuthContext';
 const Users = () => {
-    const [add, setAdd] = useState(false);
     const [act, setAct] = useState(false);
     const [search, setSearch] = useState("");
     const [centre, setcentre] = useState("All");
@@ -23,9 +18,7 @@ const Users = () => {
     const handleCentreInputChange = (newValue) => {
       setcentre(newValue);
     };
-    const handleRoleInputChange = (newValue) => {
-      setRole(newValue);
-    };
+
     useEffect(() => {
       if(user?.Role === 'DRCentre'){
         const fetchUsersData = async () => {
@@ -159,8 +152,9 @@ const Users = () => {
                     (role === "All" || item.Role.toLowerCase().includes(role.toLowerCase()))
                   ) {
                     return item;
-                  } 
+                  }
                 }      
+                return null;
               }).map((user) => (
                 <UserRow User={user}/>
               ))}

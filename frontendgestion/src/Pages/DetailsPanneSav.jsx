@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
-import MyAsideBar from "../Components/asideBar";
 import MyNavBar from "../Components/navBar";
 import { useState } from "react";
 import FormInput from "../Components/Form/FormInput";
 import "./Style/detailspanne.css";
-import Progress from "../Components/Progress";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
-import { BsCardImage } from "react-icons/bs";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import TablePanneRow from "../Components/Table/TablePanneRow";
 import PanneTest from "../Components/Table/PanneTest";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { ToastContainer, toast } from "react-toastify";
@@ -26,10 +22,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import moment from 'moment-timezone';
-import { Fa1 } from "react-icons/fa6";
 import { CircularProgress } from '@mui/material';
 import TypePanneSelect from "../Components/Form/TypePanneSelect";
-import Updatebutton from '../Components/Buttons/updatebutton'
 import { isEmpty  } from "validator";
 import ActionCorrectiveSelect from "../Components/Form/ActionCorrective";
 
@@ -43,7 +37,6 @@ const DetailsPanneSav = () => {
   const { id } = useParams();
   const { user } = useAuthContext();
   const [image, setSelectedImage] = useState(null);
-  const [imageUploaded, setImageUploaded] = useState(false);
   const [ToggleValue, setToggleValue] = useState(0);
   const [disabledButtons, setDisabledButtons] = useState([
     false,
@@ -63,7 +56,6 @@ const DetailsPanneSav = () => {
   const [openDialog6, setOpenDialog6] = useState(false);
   const [openDialogPDF, setOpenDialogPDF] = useState(false);
   const [selectedCheckboxLabel, setSelectedCheckboxLabel] = useState('');
-  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false); // State for CircularProgress
   const [lableACT, setlableACT] = useState('');
   const [CodePostal, setCodePostal] = useState('0');
@@ -83,9 +75,11 @@ const DetailsPanneSav = () => {
   const BL = 'BL';
   //Upload image to server
   const uploadImage = async (e) => {
+    setLoading(true); // Show CircularProgress
     e.preventDefault();
     if(image === null || image === undefined ){
       notifyFailed("Veuillez choisir une image");
+      setLoading(false); // Hide CircularProgress
     }else{
       const formData = new FormData();
       formData.append("image", image);
@@ -105,9 +99,11 @@ const DetailsPanneSav = () => {
       if (result.status === 200) {
         notifySuccess("Image a été téléchargée avec succès.");
         setSelectedImage(null);
+        setLoading(false); // Hide CircularProgress
       } else {
         notifyFailed("Erreur lors du téléchargement de l'image.");
         setSelectedImage(null);
+        setLoading(false); // Hide CircularProgress
       }
     }
     
@@ -439,7 +435,7 @@ const DetailsPanneSav = () => {
   }
   //Go back to previous page
   const GoBackPressed = () => {
-    if (PanneData?.Progres != 0) {
+    if (PanneData?.Progres !== 0) {
       navigate("/liste_des_pannes");
     } else {
       navigate(-1);
@@ -917,8 +913,7 @@ const DetailsPanneSav = () => {
                 <img src={imageframe} alt="" style={{maxWidth: "350px",width: "100%",height: "250px",marginTop: "30px",}} />
               )}
             </div>
-            <input type="button" value="Envoyer" onClick={uploadImage} className="file-send-btn" />
-
+            <input type="button" value={!loading ? "Envoyer" : "...."} onClick={uploadImage} className="file-send-btn" />
           </div>
         </div>
         <div className="Historique-container">

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './Style/OpenTicket.css'
 import FormInput from '../Components/Form/FormInput'
-import CostumSelect from '../Components/Form/CostumSelect'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PanneSelect from '../Components/Form/PanneSelect';
@@ -43,13 +42,10 @@ const OuvrirUnTicket = () => {
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
         setLoading(false);
     }; 
-    const [isValid, setIsValid] = useState(true);
-
     const handleNomInputChange = (newValue) => {
         setNom(newValue);
     };

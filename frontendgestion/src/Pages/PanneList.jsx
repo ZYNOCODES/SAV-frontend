@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import MyAsideBarActive from '../Components/asideBarActive'
 import {IoArrowBackCircleSharp, IoArrowForwardCircle} from  "react-icons/io5"
-import { useNavigate } from 'react-router-dom';
+import { FaCircle } from "react-icons/fa";
 import { useState} from "react";
 import TablePanneRow from '../Components/Table/TablePanneRow';
-import Panne from '../Components/Table/Panne';
 import MyAsideBar from "../Components/asideBar";
 import MyNavBar from "../Components/navBar";
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -15,18 +14,18 @@ import { CircularProgress } from '@mui/material';
 import moment from 'moment';
 
 export const PanneList = () => {
-    const [add, setAdd] = useState(false);
     const [act, setAct] = useState(false);
     const [search, setSearch] = useState("");
     const [centredepot, setcentredepot] = useState("All");
     const [progres, setprogres] = useState("All");
-    const [datedepot, setdatedepot] = useState();
+    const [datedepot, setdatedepot] = useState(null);
     const [ProduitenPanne, setProduitenPanne] = useState([]);
     const { user } = useAuthContext();
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 15;
     const startIndex = (currentPage - 1) * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
+    const [totalPages, settotalPages] = useState(0);
 
     const handleCentreInputChange = (newValue) => {
       setcentredepot(newValue);
@@ -66,7 +65,42 @@ export const PanneList = () => {
       };
     
       fetchPannesData();
-    }, [user?.Centre, user?.Role, user?.id, user?.token]);
+    }, [user?.Centre, user?.Role, user?.id, user?.token, search, datedepot, progres, centredepot]);
+    // Filter data based on search criteria
+    const filteredPanneData = ProduitenPanne?.filter(item => {
+        if(
+          (
+            search.toLowerCase() === "" ||
+            item.id.toString().includes(search.toLowerCase()) ||
+            item.Nom.toLowerCase().includes(search.toLowerCase()) ||
+            item.Prenom.toLowerCase().includes(search.toLowerCase()) ||
+            item.Progres.toString().includes(search.toLowerCase()) ||
+            item.CentreDepot.toLowerCase().includes(search.toLowerCase()) ||
+            item.ReferanceProduit.toLowerCase().includes(search.toLowerCase()) ||
+            item.TypePanne.toLowerCase().includes(search.toLowerCase()) ||
+            formatDate(item.DateDepot).toLowerCase().includes(search.toLowerCase())
+          )
+          &&
+          (
+            centredepot === "All" ||
+            item.CentreDepot.toLowerCase().includes(centredepot.toLowerCase())
+          )
+          &&
+          (
+            datedepot === null || item.DateDepot.includes(datedepot)
+          )
+          &&
+          (
+            progres === "All" ||
+            (item.Progres.toString().includes(progres.toString()) && item.Etat === null) ||
+            (progres.toString() === '6' ? item.Etat !== null : null)
+          )
+        ){
+          return item;
+        }
+        return null;
+    });
+    const slicedData = (filteredPanneData.length < 1 && (search === "" && datedepot === null && progres === "All" && centredepot === "All")) ? ProduitenPanne : filteredPanneData;
     const handleNextPage = () => {
       if(ProduitenPanne !== null){
         if (currentPage < Math.ceil(ProduitenPanne.length / rowsPerPage)) {
@@ -80,7 +114,12 @@ export const PanneList = () => {
         setCurrentPage(currentPage - 1);
       }
     };
-  return (
+    // Reset currentPage to 1 when search criteria change or data is filtered
+    useEffect(() => {
+      settotalPages(Math.ceil(slicedData.length / rowsPerPage));
+      setCurrentPage(1); 
+    }, [search, datedepot, progres, centredepot, slicedData.length, rowsPerPage]);
+    return (
     <>
     <MyNavBar  act={act} setAct={setAct} />
       <MyAsideBar />
@@ -127,37 +166,38 @@ export const PanneList = () => {
                 <td className="table-patients-header-progress">Suspension</td>
                 <td className="table-patients-header-button">
                   <div className="pagination-buttons">
-                    <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                      <IoArrowBackCircleSharp className='next-back-row-table'/>
-                    </button>
-                    <button onClick={ProduitenPanne ? handleNextPage : null} disabled={ProduitenPanne ? currentPage === Math.ceil(ProduitenPanne.length / rowsPerPage) : null}>
-                      <IoArrowForwardCircle className='next-back-row-table'/>
-                    </button>
+                      <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                        {(currentPage > 1) ?
+                          <IoArrowBackCircleSharp className='next-back-row-table'/>
+                          :
+                          <FaCircle className='null-next-back-row-table'/>
+                        }
+                      </button>
+                    <h1>{currentPage}</h1>
+                      <button onClick={ProduitenPanne ? handleNextPage : null} disabled={ProduitenPanne ? currentPage === totalPages : null}>
+                        {currentPage < totalPages ?
+                          <IoArrowForwardCircle className='next-back-row-table'/>
+                          :
+                          <FaCircle className='null-next-back-row-table'/>
+                        }
+                      </button>
                   </div>
                 </td>
                 <td className="table-patients-header-button"></td>
               </tr>
-              {ProduitenPanne?.slice(startIndex, endIndex).filter((item) => {
-                if (
-                  (search.toLowerCase() === "" ||
-                    item.id.toString().includes(search.toLowerCase()) ||
-                    item.Nom.toLowerCase().includes(search.toLowerCase()) ||
-                    item.Prenom.toLowerCase().includes(search.toLowerCase())||
-                    item.Progres.toString().includes(search.toLowerCase())||
-                    item.CentreDepot.toLowerCase().includes(search.toLowerCase())||
-                    item.ReferanceProduit.toLowerCase().includes(search.toLowerCase())||
-                    item.TypePanne.toLowerCase().includes(search.toLowerCase())||
-                    formatDate(item.DateDepot).toLowerCase().includes(search.toLowerCase())) &&
-                  (datedepot == null || item.DateDepot.includes(datedepot)) &&
-                  (progres === "All" || (item.Progres.toString().includes(progres.toString()) && item.Etat === null) 
-                  || (progres.toString() == '6' && item.Etat != null) || (item.Progres.toString().includes(progres.toString()) && item.Etat != null)) &&
-                  (centredepot === "All" || item.CentreDepot.toLowerCase().includes(centredepot.toLowerCase()))
-                ) {
-                  return item;
-                }
-              }).map((Panne) => (
-                <TablePanneRow Panne={Panne} />
-              ))}
+              {slicedData.length < 1 ? (
+                <td colSpan={7}>
+                  <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                    <h1>Aucune panne disponible</h1>
+                  </div>                
+                </td>
+                ) : (
+                  slicedData.slice(startIndex, endIndex).map(Panne => (
+                    <TablePanneRow key={Panne.id} Panne={Panne} />
+                  )
+                )
+              )
+            }
             </table>
           </div>
           :

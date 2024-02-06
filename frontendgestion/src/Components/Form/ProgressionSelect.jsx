@@ -12,7 +12,7 @@ const ProgressionSelect = (props) => {
       <label>{props.label}</label>
       <select
       onChange={handleChange}>
-        <option>All</option>
+        <option value={"All"}>All</option>
         <option value={0}>Produits En attente depot</option>
         <option value={6}>Produits suspendu</option>
         <option value={1}>Produits deposés</option>

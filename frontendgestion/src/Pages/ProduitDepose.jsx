@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
-import MyAsideBar from "../Components/asideBar";
 import MyNavBar from "../Components/navBar";
 import { useState} from "react";
 import FormInput from '../Components/Form/FormInput';
 import './Style/detailspanne.css'
-import Progress from '../Components/Progress';
 import { IoIosArrowBack } from "react-icons/io";
 import {useNavigate, useParams} from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -18,7 +16,6 @@ import Button from '@mui/material/Button';
 import "react-toastify/dist/ReactToastify.css";
 import moment from 'moment-timezone';
 import { Box, Checkbox, CircularProgress, FormControlLabel } from '@mui/material';
-import ActionCorrectiveSelect from "../Components/Form/ActionCorrective";
 
 const ProduitDepose = () => {
     const [act, setAct] = useState(false);
@@ -247,7 +244,7 @@ const ProduitDepose = () => {
     // handle open the dialog based on the selected value
     const handleCheckboxClick = (label) => {
       setSelectedCheckboxLabel(label);
-      if(label == "Hors Garantie"){
+      if(label === "Hors Garantie"){
         setopenCauseGarentieDialog(true);
         setopenGarentieDialog(false);
       }else{

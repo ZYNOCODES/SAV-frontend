@@ -1,8 +1,3 @@
-@font-face {
-  font-family: Poppins;
-}
-
-
 .dialog-overlay {
   position: fixed;
   top: 0;
@@ -3872,9 +3867,19 @@ form {
   opacity: 1;
 }
 .next-back-row-table{
-  font-size: 22px;
-  margin: 0;
+  font-size: 25px;
+  margin: 10px;
   padding: 0;
+}
+.null-next-back-row-table{
+  font-size: 10px;
+  margin: 10px;
+  padding: 0;
+}
+.pagination-buttons h1{
+  font-size: larger;
+  font-weight: 700;
+  color: #060e30;
 }
 .pagination-buttons{
   width: 100%;
@@ -3894,5 +3899,20 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
+  height: auto;}
+.Main-app{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #F8F9FD;
+  min-height: 100vh;
+}
+.Main-app h1{
+  color: #DA171B;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
 }

@@ -9,7 +9,6 @@ import {useNavigate, useParams} from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import ProgressBar from "@ramonak/react-progress-bar";
 import moment from 'moment-timezone';
-import ActionCorrectiveSelect from "../Components/Form/ActionCorrective";
 
 const DetailsPanne = () => {
     const [act, setAct] = useState(false);

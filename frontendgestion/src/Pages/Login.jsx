@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './Style/Login.css'
-import {useNavigate} from 'react-router-dom';
 import Logo from './Style/Logo.png'
 import imagelogin from './Style/Loginimage.png'
 import { ToastContainer, toast } from "react-toastify";
@@ -12,13 +11,10 @@ const Login = () => {
   const notifySuccess = (message) => toast.success(message);
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [isloadingL, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
-  const navigate = useNavigate();
   async function submitLogin(e) {
     e.preventDefault();
     try {
-      setIsLoading(true);
       const reponse = await fetch(process.env.REACT_APP_URL_BASE+"/User/login", {
         method: "POST",
         headers: {
@@ -32,7 +28,6 @@ const Login = () => {
       const json = await reponse.json();
 
       if (!reponse.ok) {
-        setIsLoading(false);
         notify(json.message);
       }
       if (reponse.ok) {
@@ -40,9 +35,7 @@ const Login = () => {
         //save the user in local storage
         localStorage.setItem("user", JSON.stringify(json));
         //apdate the auth context
-        dispatch({ type: "LOGIN", payload: json });
-        setIsLoading(false);
-        
+        dispatch({ type: "LOGIN", payload: json });        
       }
     }catch (error) {
       console.error("Error fetching Panne data:", error);

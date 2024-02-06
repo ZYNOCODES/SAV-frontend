@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
 import MyAsideBarActive from '../Components/asideBarActive'
-import { useNavigate } from 'react-router-dom';
 import { useState} from "react";
 import TablePanneRow from '../Components/Table/TablePanneRow';
-import Panne from '../Components/Table/Panne';
 import MyAsideBar from "../Components/asideBar";
 import MyNavBar from "../Components/navBar";
 import { useAuthContext } from '../hooks/useAuthContext';
 import CostumSelectCentre from '../Components/Form/CostumSelectCentre';
-import ProgressionSelect from '../Components/Form/ProgressionSelect';
 
 
 export const PanneListLivrees = () => {
@@ -115,7 +112,7 @@ export const PanneListLivrees = () => {
                 ) {
                   return item;
                 }
-                
+                return null;
               }).map((Panne) => (
                 <TablePanneRow Panne={Panne} />
               ))}
