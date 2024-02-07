@@ -7,14 +7,17 @@ import MyDashboradTop from "../Components/dashboradItems";
 import MyAsideBar from "../Components/asideBar";
 import MyNavBar from "../Components/navBar";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { CircularProgress } from '@mui/material';
 
 function Dashboard() {
   const [act, setAct] = useState(false);
   const { user } = useAuthContext();
   const [DashboardData, setDashboardData] = useState();
-  
+  const [internetLoading, setInternetLoading] = useState(false);
+
   useEffect(() => {
     const fetchDashboardData = async () => {
+      setInternetLoading(true);
       try {
         const response = await fetch(process.env.REACT_APP_URL_BASE+`/Dashboard/`, {
           method: "GET",
@@ -32,11 +35,23 @@ function Dashboard() {
         }
       } catch (error) {
         console.error("Error fetching Panne data:", error);
+      }finally{
+        setInternetLoading(false);
       }
     };
   
     fetchDashboardData();
   }, [user?.token]);
+  if (internetLoading) {
+    return (
+      <div className="Main-app">
+        <div className="CircularProgress-container">
+          <CircularProgress className='CircularProgress' />
+        </div>  
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <>
       <MyNavBar  act={act} setAct={setAct} />

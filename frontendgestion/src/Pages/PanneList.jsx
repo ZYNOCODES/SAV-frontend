@@ -26,7 +26,6 @@ export const PanneList = () => {
     const startIndex = (currentPage - 1) * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
     const [totalPages, settotalPages] = useState(0);
-
     const handleCentreInputChange = (newValue) => {
       setcentredepot(newValue);
     };
@@ -100,7 +99,7 @@ export const PanneList = () => {
         }
         return null;
     });
-    const slicedData = (filteredPanneData.length < 1 && (search === "" && datedepot === null && progres === "All" && centredepot === "All")) ? ProduitenPanne : filteredPanneData;
+    const slicedData = (filteredPanneData?.length < 1 && (search === "" && datedepot === null && progres === "All" && centredepot === "All")) ? ProduitenPanne : filteredPanneData;
     const handleNextPage = () => {
       if(ProduitenPanne !== null){
         if (currentPage < Math.ceil(ProduitenPanne.length / rowsPerPage)) {
@@ -116,9 +115,10 @@ export const PanneList = () => {
     };
     // Reset currentPage to 1 when search criteria change or data is filtered
     useEffect(() => {
-      settotalPages(Math.ceil(slicedData.length / rowsPerPage));
+      settotalPages(Math.ceil(slicedData?.length / rowsPerPage));
       setCurrentPage(1); 
-    }, [search, datedepot, progres, centredepot, slicedData.length, rowsPerPage]);
+    }, [search, datedepot, progres, centredepot, slicedData?.length, rowsPerPage]);
+  
     return (
     <>
     <MyNavBar  act={act} setAct={setAct} />
@@ -213,7 +213,7 @@ export const PanneList = () => {
 }
 function formatDate(dateString) {
   const timeZone = 'Africa/Algiers'; // Algeria's time zone
-  const date = moment(dateString).tz(timeZone);
+  const date = moment.tz(dateString, timeZone); // Parse the date string with the specified time zone
   const monthNames = [
     'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
     'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
@@ -226,5 +226,4 @@ function formatDate(dateString) {
 
   const formattedDate = `${month} ${day}, ${year} at ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
   return formattedDate;
-
 }

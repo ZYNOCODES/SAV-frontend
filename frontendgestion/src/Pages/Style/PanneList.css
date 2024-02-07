@@ -19,3 +19,19 @@
   align-items: center;
   height: auto;
 }
+.Main-app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #F8F9FD;
+    min-height: 100vh;
+}
+.Main-app h1{
+    color: #DA171B;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 1px;
+}

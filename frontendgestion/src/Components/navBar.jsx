@@ -4,14 +4,14 @@ import Logo from './assets/Logo.png'
 import profilIcon from './assets/Ellipse4.png'
 import { FaInfoCircle } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
-
-
+import { CircularProgress } from '@mui/material';
 import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function MyNavBar({ act, setAct }) {
   const { user } = useAuthContext();
   const [UserData, setUserData] = useState(); 
   const [isDialogOpen, setDialogOpen] = useState(false);
+  const [internetLoading, setInternetLoading] = useState(false);
 
   const openDialog = () => {
     setDialogOpen(true);
@@ -24,6 +24,7 @@ export default function MyNavBar({ act, setAct }) {
 
   useEffect(() => {
     const fetchUserData = async () => {
+      setInternetLoading(true);
       try {
         const response = await fetch(process.env.REACT_APP_URL_BASE+`/User/${user?.id}`, {
           headers: {
@@ -40,11 +41,23 @@ export default function MyNavBar({ act, setAct }) {
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
+      }finally{
+        setInternetLoading(false);
       }
     };
   
     fetchUserData();
   }, [user?.id, user?.token]); 
+  if (internetLoading) {
+    return (
+      <div className="Main-app">
+        <div className="CircularProgress-container">
+          <CircularProgress className='CircularProgress' />
+        </div>  
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <div className="Navbar">
       <nav>

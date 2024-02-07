@@ -49,7 +49,7 @@ const DelaiRepRow = ({data}) => {
 }
 function formatDate(dateString) {
   const timeZone = 'Africa/Algiers'; // Algeria's time zone
-  const date = moment(dateString).tz(timeZone);
+  const date = moment.tz(dateString, timeZone); // Parse the date string with the specified time zone
   const monthNames = [
     'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
     'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
@@ -60,8 +60,7 @@ function formatDate(dateString) {
   const hours = date.hours();
   const minutes = date.minutes();
 
-  const formattedDate = `${month} ${day}, ${year} at ${hours}:${minutes}`;
+  const formattedDate = `${month} ${day}, ${year} at ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
   return formattedDate;
-
 }
 export default DelaiRepRow

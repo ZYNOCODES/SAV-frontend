@@ -55,6 +55,7 @@ const DetailsPanneSav = () => {
   const [openDialog5, setOpenDialog5] = useState(false);
   const [openDialog6, setOpenDialog6] = useState(false);
   const [openDialogPDF, setOpenDialogPDF] = useState(false);
+  const [openDialogCircle, setOpenDialogCircle] = useState(false);
   const [selectedCheckboxLabel, setSelectedCheckboxLabel] = useState('');
   const [loading, setLoading] = useState(false); // State for CircularProgress
   const [lableACT, setlableACT] = useState('');
@@ -75,12 +76,11 @@ const DetailsPanneSav = () => {
   const BL = 'BL';
   //Upload image to server
   const uploadImage = async (e) => {
-    setLoading(true); // Show CircularProgress
     e.preventDefault();
     if(image === null || image === undefined ){
       notifyFailed("Veuillez choisir une image");
-      setLoading(false); // Hide CircularProgress
     }else{
+      setOpenDialogCircle(true); // Show CircularProgress
       const formData = new FormData();
       formData.append("image", image);
       formData.append("id", id);
@@ -99,11 +99,11 @@ const DetailsPanneSav = () => {
       if (result.status === 200) {
         notifySuccess("Image a été téléchargée avec succès.");
         setSelectedImage(null);
-        setLoading(false); // Hide CircularProgress
+        setOpenDialogCircle(false); // Hide CircularProgress
       } else {
         notifyFailed("Erreur lors du téléchargement de l'image.");
         setSelectedImage(null);
-        setLoading(false); // Hide CircularProgress
+        setOpenDialogCircle(false); // Hide CircularProgress
       }
     }
     
@@ -905,15 +905,15 @@ const DetailsPanneSav = () => {
             <div className="image">
               {(PanneData?.image !== null || image !== null)  ? (
                 <img
-                  src={PanneData?.image === null ? URL.createObjectURL(image) : `/images/${PanneData?.image}` }
-                  alt="product img"
+                  src={PanneData?.image === null ? '../Components/assets/imageframe.png' : `/images/${PanneData?.image}`}
+                  alt={PanneData?.image ? "Uploaded image" : "Upload your image here"}
                   style={{ maxWidth: "350px", width: "100%", height: "310px" }}
                 />
               ) : (
                 <img src={imageframe} alt="" style={{maxWidth: "350px",width: "100%",height: "250px",marginTop: "30px",}} />
               )}
             </div>
-            <input type="button" value={!loading ? "Envoyer" : "...."} onClick={uploadImage} className="file-send-btn" />
+            <input type="button" value={!openDialogCircle ? "Envoyer" : "...."} onClick={uploadImage} className="file-send-btn" />
           </div>
         </div>
         <div className="Historique-container">
@@ -1131,13 +1131,28 @@ const DetailsPanneSav = () => {
           </DialogActions>
         </Dialog>
         <ToastContainer />
+        <Dialog
+          open={openDialogCircle}
+          onClose={false}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <div className="CircularProgress-container">
+              <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                      Ce processus peut prendre du temps en fonction de votre connexion Internet. Veuillez patienter jusqu'à la fin.
+                  </DialogContentText>
+              </DialogContent>
+            <CircularProgress className="CircularProgress" />
+          </div>
+        </Dialog>
       </div>
     </>
   );
 };
 function formatDate(dateString) {
   const timeZone = 'Africa/Algiers'; // Algeria's time zone
-  const date = moment(dateString).tz(timeZone);
+  const date = moment.tz(dateString, timeZone); // Parse the date string with the specified time zone
   const monthNames = [
     'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
     'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
@@ -1150,6 +1165,5 @@ function formatDate(dateString) {
 
   const formattedDate = `${month} ${day}, ${year} at ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
   return formattedDate;
-
 }
 export default DetailsPanneSav;
