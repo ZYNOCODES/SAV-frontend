@@ -23,7 +23,7 @@ export default function Contact (){
 
   async function handleSendEmail(e) {
     e.preventDefault();
-    const reponse = await fetch("http://localhost:8000/EmailSender", {
+    const reponse = await fetch(process.env.REACT_APP_URL_BASE+"/EmailSender", {
         method: "POST",
         headers: {
           "content-type": "application/json",

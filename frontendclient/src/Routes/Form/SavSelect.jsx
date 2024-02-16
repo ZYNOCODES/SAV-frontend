@@ -13,7 +13,7 @@ const SavSelect = (props) => {
   useEffect(() => {
     const fetchSAVData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/SAV', {
+        const response = await fetch(process.env.REACT_APP_URL_BASE+'/SAV', {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const SavSelect = (props) => {
   useEffect(() => {
     const fetchAgentData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/Agent', {
+        const response = await fetch(process.env.REACT_APP_URL_BASE+'/Agent', {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

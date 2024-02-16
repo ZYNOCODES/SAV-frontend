@@ -87,7 +87,7 @@ const Openticket = () => {
                 handleCreateNewPanneWithPDF();
                 handleClose();
             }else{
-                const response = await fetch('http://localhost:8000/EmailGenerator/createPDF/BonV1', {
+                const response = await fetch(process.env.REACT_APP_URL_BASE+'/EmailGenerator/createPDF/BonV1', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ const Openticket = () => {
                     if(response.ok){
                         const uniqueFilename = data.uniqueFilename;
                         
-                        const pdfResponse = await fetch(`http://localhost:8000/EmailGenerator/fetchPDF?filename=${uniqueFilename}`, {
+                        const pdfResponse = await fetch(process.env.REACT_APP_URL_BASE+`/EmailGenerator/fetchPDF?filename=${uniqueFilename}`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/pdf'
@@ -141,7 +141,7 @@ const Openticket = () => {
         }
     }
     async function handleCreateNewPanneWithPDF(PDFFilename) {
-        const reponse = await fetch("http://localhost:8000/Pannes", {
+        const reponse = await fetch(process.env.REACT_APP_URL_BASE+"/Pannes", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -167,7 +167,7 @@ const Openticket = () => {
     async function handleCreateNewPanneNoPDF(e) {
         handleClose();
         e.preventDefault();
-        const reponse = await fetch("http://localhost:8000/Pannes", {
+        const reponse = await fetch(process.env.REACT_APP_URL_BASE+"/Pannes", {
             method: "POST",
             headers: {
               "content-type": "application/json",
