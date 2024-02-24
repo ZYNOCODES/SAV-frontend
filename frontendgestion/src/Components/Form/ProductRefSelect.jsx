@@ -1,12 +1,21 @@
 import { useAuthContext } from '../../hooks/useAuthContext';
 import './FormInput.css'
 import React, { useEffect, useState } from 'react'
+import Select from 'react-select';
 
 const ProductSelect = (props) => {
   const { user } = useAuthContext();
-  const handleChange = (event) => {
-    if (props.onChange) {
-      props.onChange(event.target.value);
+  const handleChange = (selectedOption) => {
+    if (selectedOption === null) {
+      // Handle clearable button click
+      if (props.onChange) {
+        props.onChange(null);
+      }
+    } else {
+      // Handle regular selection
+      if (props.onChange) {
+        props.onChange(selectedOption.value);
+      }
     }
   };
   const [products, setProducts] = useState([]);
@@ -34,21 +43,35 @@ const ProductSelect = (props) => {
   
     fetchProductData();
   }, [user?.token]);
+
   return (
     <div className='forminput'>
       <label>{props.label}</label>
-      <select onChange={handleChange}>
-        <option value=''>
-            Sélectionné votre produit
-        </option>
-        {products.map((product) => (
-            <option key={product?.id} value={product?.ReferanceProduit}>
-                {product?.ReferanceProduit}
-            </option>
-        ))}        
-      </select>
+      <Select
+        className="select-custom"
+        classNamePrefix="select"
+        styles={{
+          control: (baseStyles, state) => ({
+            ...baseStyles,
+            borderRadius: 10,
+            borderColor: state.isFocused ? '#000' : 'grey',
+            textAlign: 'center',
+            fontSize: '1em',
+            display: 'flex',
+            backgroundColor: '#dfdcdc',
+            marginTop: 5
+          }),
+        }}
+        placeholder = "Sélectionné votre produit"
+        isClearable={true}
+        isSearchable={true}
+        options={products.map(option => ({
+          value: option.ReferanceProduit,
+          label: option.ReferanceProduit
+        }))}
+        onChange={handleChange}
+      />
     </div>
-    
   )
 }
 

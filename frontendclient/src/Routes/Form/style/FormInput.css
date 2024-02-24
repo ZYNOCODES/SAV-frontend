@@ -6,7 +6,6 @@
     text-align: center;
     width: 50vh;
     font-size: 1em;
-
 }
 
 .forminput input:enabled,select:enabled{
@@ -18,13 +17,12 @@
     border: 2px solid #000;
     transition: 0.5s;
 }
+
 label{
     margin: 20px;
 }
 
 @media only screen and (max-width:1024px){
-    
-    
     .forminput input,select{
         padding: 7px 10px;
         margin-top: 5px;
@@ -36,7 +34,6 @@ label{
         display: flex;
         flex-direction: column;
     }
-
     label{
         margin-bottom: 7px;
         margin-left: 7px;

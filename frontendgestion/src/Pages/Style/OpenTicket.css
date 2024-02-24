@@ -25,12 +25,15 @@ text-align: center;
     flex-direction: row;
     padding: 50px;
     justify-content: center;
+    height: 100vh;
 }
 .left-form{
     margin-right: 30px;
+    height: 100%
 }
 .right-form{
     margin-left: 30px;
+    height: 100%
 }
 
 .button-section{
