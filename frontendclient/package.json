@@ -1,8 +1,8 @@
 {
   "name": "website-stream",
   "version": "0.1.0",
-  "homepage": "https://stream-client.onrender.com",
   "private": true,
+  "proxy": "https://support.sav.streamsystem.com",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
